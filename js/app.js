@@ -47,21 +47,25 @@
     else if (operator === '÷') {
       if (rightOperand === 0) {
         $screen.text('Error');
+
         return;
       }
       result = divide(leftOperand, rightOperand);
       $screen.text(result);
     }
     const nextScreen = result.toString();
+
     $screen.text(nextScreen);
   });
 
-  $('.buttons').on('click', 'span', (event) => {
+  $('.buttons').on('click', 'span:not(#clear):not(#equals)', (event) => {
     const screen = $screen.text();
+
     if (screen === 'Error') {
       return;
     }
     const nextScreen = screen + event.target.textContent;
+
     $screen.text(nextScreen);
   });
 })();
